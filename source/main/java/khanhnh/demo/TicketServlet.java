@@ -105,7 +105,7 @@ public class TicketServlet extends HttpServlet {
         
         request.setAttribute("ticketId", idString);
         request.setAttribute("ticket", ticket);
-        request.getRequestDispatcher("/jsp/view/Tickets/viewTicket.jsp").forward(request, response);
+        request.getRequestDispatcher("/view/Tickets/viewTicket.jsp").forward(request, response);
 
 	}
 
@@ -141,7 +141,7 @@ public class TicketServlet extends HttpServlet {
 	//done
 	private void listTickets(HttpServletResponse response, HttpServletRequest request) throws ServletException, IOException {
 		request.setAttribute("ticketDatabase", this.ticketDatabase);
-		request.getRequestDispatcher("/jsp/view/Tickets/listTickets.jsp").forward(request, response);
+		request.getRequestDispatcher("/view/Tickets/listTickets.jsp").forward(request, response);
 	}
 	
 	//done
