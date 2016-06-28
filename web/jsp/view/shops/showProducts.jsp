@@ -30,12 +30,18 @@
 						<c:url value="/shop" >
 							<c:param name="action" value="addtoCart" />
 							<c:param name="productId" value="<%=Integer.toString(id) %>" />
-						</c:url><%=products.get(id) %>
-					">
-					</a><br/><
+						</c:url>
+					"><%=products.get(id) %>
+					</a><br/>
 				<%
 			}
 		}
 	%>
+	<a href="
+		<c:url value="/shop" >
+			<c:param name="action" value="viewCart"/>
+		</c:url>
+	"> Go to your cart !<br/>
+	</a>
 </body>
 </html>

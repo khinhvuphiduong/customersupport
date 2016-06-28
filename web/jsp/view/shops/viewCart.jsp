@@ -21,14 +21,22 @@
 		@SuppressWarnings("unchecked")
 		Map<Integer, Integer> cart=(Map<Integer, Integer>)session.getAttribute("cart");
 		if(cart==null || cart.size()==0)
-			%><i>Sorry ! We haven't chosen any product.</i>
-			<%
+			out.println("<i>Sorry ! We haven't chosen any product.</i>");
 			else{
 				%>
 				Your products are: <br/>
 				<%
 				for(int id: cart.keySet()){
 					out.println(products.get(id)+" (qty: "+cart.get(id)+")<br/>");
+					%>
+						<a href="
+							<c:url value="/shop" >
+								<c:param name="action" value="removeCart"/>
+								<c:param name="productId" value="<%=Integer.toString(id) %>"/>
+							</c:url>
+						"> remove!<br/>
+						</a>
+					<%
 				}
 			}	
 	%>

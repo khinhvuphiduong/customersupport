@@ -41,7 +41,6 @@ public class StoreServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		response.getWriter().println("Hello");
 		String action=request.getParameter("action");
 		if(action==null)
 			action="browse";
@@ -49,9 +48,11 @@ public class StoreServlet extends HttpServlet {
 		case "viewCart":
 			this.viewCart(request, response);
 			break;
-			
 		case "browse":
 			this.browseProducts(request, response);
+			break;
+		case "addtoCart":
+			this.addToCart(request, response);
 			break;
 		default:
 			break;
@@ -60,7 +61,7 @@ public class StoreServlet extends HttpServlet {
 
 	private void viewCart(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
 		request.setAttribute("products", products);
-		request.getRequestDispatcher("/jsp/shops/viewCart.jsp").forward(request, response);
+		request.getRequestDispatcher("/jsp/view/shops/viewCart.jsp").forward(request, response);
 		
 	}
 	
@@ -84,14 +85,16 @@ public class StoreServlet extends HttpServlet {
 		Map<Integer, Integer> cart=(Map<Integer, Integer>)session.getAttribute("cart");
 		if(!cart.containsKey(productId))
 			cart.put(productId, 0);
-//			response.getWriter().println("<script type=\"text/javascript\">alert('This product already have been chosen !');</script>");
 		else
-			cart.put(productId, cart.get(productId)+1);		
+			cart.put(productId, cart.get(productId)+1);
+		
+		response.getWriter().println("<script type=\"text/javascript\">alert('This product is added (qty:" + Integer.toString(cart.get(productId)+1) + "!');</script>");
+		response.sendRedirect("shop");
 	}
 	
 	private void browseProducts(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
 		request.setAttribute("products", products);
-		request.getRequestDispatcher("/jsp/shops/showProducts.jsp").forward(request, response);
+		request.getRequestDispatcher("/jsp/view/shops/showProducts.jsp").forward(request, response);
 	}
 	
 	/**
@@ -99,20 +102,6 @@ public class StoreServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		String action=request.getParameter("action");
-		if(action==null)
-			action="browse";
-		switch (action) {
-		case "addCart":
-			this.addToCart(request, response);
-			break;
-			
-		case "browse":
-			this.browseProducts(request, response);
-			break;
-		default:
-			break;
-		}
 	}
 
 }
