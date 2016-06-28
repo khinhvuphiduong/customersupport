@@ -54,6 +54,9 @@ public class StoreServlet extends HttpServlet {
 		case "addtoCart":
 			this.addToCart(request, response);
 			break;
+		case "removefromCart":
+			this.removefromCart(request, response);
+			break;
 		default:
 			break;
 		}
@@ -84,12 +87,33 @@ public class StoreServlet extends HttpServlet {
 		@SuppressWarnings("unchecked")
 		Map<Integer, Integer> cart=(Map<Integer, Integer>)session.getAttribute("cart");
 		if(!cart.containsKey(productId))
-			cart.put(productId, 0);
+			cart.put(productId, 1);
 		else
 			cart.put(productId, cart.get(productId)+1);
 		
 		response.getWriter().println("<script type=\"text/javascript\">alert('This product is added (qty:" + Integer.toString(cart.get(productId)+1) + "!');</script>");
 		response.sendRedirect("shop");
+	}
+	
+	private void removefromCart(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
+		String pId=request.getParameter("productId");
+		Integer productId=-1;
+		try{
+			productId=Integer.parseInt(pId);
+		}
+		catch(Exception e){
+			response.sendRedirect("shop");
+			return;
+		}
+				
+		HttpSession session=request.getSession();		
+		@SuppressWarnings("unchecked")
+		Map<Integer, Integer> cart=(Map<Integer, Integer>)session.getAttribute("cart");
+		if(cart.get(productId)<=1)
+			cart.remove(productId);
+		else
+			cart.put(productId, cart.get(productId)-1);		
+		response.sendRedirect("shop?action=viewCart");
 	}
 	
 	private void browseProducts(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{

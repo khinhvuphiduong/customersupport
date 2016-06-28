@@ -22,6 +22,7 @@
 		if(products.size()==0){
 			%><i>Sorry ! We temporarily haven't any product.</i>
 			<%
+			out.println("<i>Sorry ! We haven't chosen any product.</i>");
 		}
 		else{
 			for(int id: products.keySet()){
