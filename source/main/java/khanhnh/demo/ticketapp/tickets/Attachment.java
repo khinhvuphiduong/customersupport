@@ -1,4 +1,4 @@
-package khanhnh.demo.ticketapp;
+package khanhnh.demo.ticketapp.tickets;
 
 public class Attachment {
 	private String name;

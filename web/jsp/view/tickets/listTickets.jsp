@@ -4,15 +4,22 @@
 <%@ include file="/jspf/base.jspf" %>
 <%
 	@SuppressWarnings("unchecked")
-	Map<Integer, Ticket> ticketDatabase=(Map<Integer, Ticket>)request.getAttribute("ticketDatabase");
+	Map<Integer, Ticket> ticketDatabase=(Map<Integer, Ticket >)request.getAttribute("ticketDatabase");
 %>    
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
+<title>Ticket List</title>
 </head>
 <body>
+	<div>
+		<a href="
+			<c:url value="/login?logout" />
+		" >
+		Logout !
+		</a><br/>
+	</div>
 	<h2>Tickets</h2>
 	<a href="
 		<c:url value="/tickets" >
