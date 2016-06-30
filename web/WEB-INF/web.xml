@@ -3,7 +3,7 @@
   <display-name>Ticket Services</display-name>
   <servlet>
     <servlet-name>ticketServlet</servlet-name>
-    <servlet-class>khanhnh.demo.TicketServlet</servlet-class>
+    <servlet-class>khanhnh.demo.ticketapp.TicketServlet</servlet-class>
     <load-on-startup>1</load-on-startup>
     <multipart-config>
       <max-file-size>10485760</max-file-size>

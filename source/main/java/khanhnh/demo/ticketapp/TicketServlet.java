@@ -1,9 +1,8 @@
-package khanhnh.demo;
+package khanhnh.demo.ticketapp;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.io.PrintWriter;
 import java.util.LinkedHashMap;
 import java.util.Map;
 

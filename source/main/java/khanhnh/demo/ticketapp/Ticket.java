@@ -1,4 +1,4 @@
-package khanhnh.demo;
+package khanhnh.demo.ticketapp;
 
 import java.util.Collection;
 import java.util.LinkedHashMap;

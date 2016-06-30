@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ page import="khanhnh.demo.PageVisit, java.util.Date, java.util.Vector, java.text.SimpleDateFormat" %>
+<%@ page import="khanhnh.demo.pageactivity.PageVisit, java.util.Date, java.util.Vector, java.text.SimpleDateFormat" %>
 <%!
 	private static String toString(long timeInterval){
 		if(timeInterval <1000)

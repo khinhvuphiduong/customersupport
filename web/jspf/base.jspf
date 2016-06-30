@@ -1,2 +1,2 @@
-<%@ page import="khanhnh.demo.Ticket, khanhnh.demo.Attachment" %>
+<%@ page import="khanhnh.demo.ticketapp.Ticket, khanhnh.demo.ticketapp.Attachment" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
