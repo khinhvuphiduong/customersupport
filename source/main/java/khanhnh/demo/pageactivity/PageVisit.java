@@ -1,4 +1,4 @@
-package khanhnh.demo;
+package khanhnh.demo.pageactivity;
 
 import java.io.Serializable;
 import java.net.InetAddress;

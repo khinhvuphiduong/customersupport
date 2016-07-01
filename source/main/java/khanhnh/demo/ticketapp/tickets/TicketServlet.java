@@ -1,9 +1,8 @@
-package khanhnh.demo;
+package khanhnh.demo.ticketapp.tickets;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.io.PrintWriter;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
@@ -13,14 +12,13 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import javax.servlet.http.Part;
 
-import com.sun.tools.internal.ws.processor.model.Request;
 
 /**
  * Servlet implementation class TicketServlet
  */
-@WebServlet("/TicketServlet")
 public class TicketServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
@@ -42,6 +40,14 @@ public class TicketServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		
+		HttpSession session=request.getSession();
+		if(session.getAttribute("username")==null)
+		{
+			response.sendRedirect("login");
+			return;
+		}
+		
 		String action = request.getParameter("action");
 		if (action == null)
 			action = "list";
@@ -93,7 +99,7 @@ public class TicketServlet extends HttpServlet {
 	
 	//done
 	private void showTicketForm(HttpServletResponse response, HttpServletRequest request) throws ServletException, IOException {
-		request.getRequestDispatcher("/jsp/view/Tickets/ticketForm.jsp").forward(request, response);
+		request.getRequestDispatcher("/jsp/view/tickets/ticketForm.jsp").forward(request, response);
 	}
 
 	private void viewTicket(HttpServletRequest request, HttpServletResponse response)
@@ -105,7 +111,7 @@ public class TicketServlet extends HttpServlet {
         
         request.setAttribute("ticketId", idString);
         request.setAttribute("ticket", ticket);
-        request.getRequestDispatcher("/view/Tickets/viewTicket.jsp").forward(request, response);
+        request.getRequestDispatcher("/jsp/view/tickets/viewTicket.jsp").forward(request, response);
 
 	}
 
@@ -141,7 +147,7 @@ public class TicketServlet extends HttpServlet {
 	//done
 	private void listTickets(HttpServletResponse response, HttpServletRequest request) throws ServletException, IOException {
 		request.setAttribute("ticketDatabase", this.ticketDatabase);
-		request.getRequestDispatcher("/view/Tickets/listTickets.jsp").forward(request, response);
+		request.getRequestDispatcher("/jsp/view/tickets/listTickets.jsp").forward(request, response);
 	}
 	
 	//done

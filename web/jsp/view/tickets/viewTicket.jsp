@@ -13,6 +13,13 @@
 <title>Show Ticket</title>
 </head>
 <body>
+	<div>
+		<a href="
+			<c:url value="/login?logout" />
+		" >
+		Logout !
+		</a><br/>
+	</div>
 	<h2>Ticket: #<%= ticketID %>: <%=ticket.getSubject() %></h2>
 	<i>Customer Name - <%=ticket.getCustomerName() %></i><br/><br/>
 	<%=ticket.getBody() %><br/><br/>

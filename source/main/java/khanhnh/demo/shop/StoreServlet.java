@@ -1,4 +1,4 @@
-package khanhnh.demo;
+package khanhnh.demo.shop;
 
 import java.io.IOException;
 import java.util.Hashtable;

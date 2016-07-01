@@ -1,4 +1,4 @@
-package khanhnh.demo;
+package khanhnh.demo.pageactivity;
 
 import java.io.IOException;
 import java.net.InetAddress;
