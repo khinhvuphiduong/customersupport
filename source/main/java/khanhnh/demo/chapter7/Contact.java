@@ -2,6 +2,7 @@ package khanhnh.demo.chapter7;
 
 import java.time.Instant;
 import java.time.MonthDay;
+import java.util.Date;
 
 public class Contact implements Comparable<Contact> {
 
@@ -71,6 +72,10 @@ public class Contact implements Comparable<Contact> {
 		return dateCreated;
 	}
 
+	public Date getOldDateCreated(){
+		return new Date(this.dateCreated.toEpochMilli());
+	}
+	
 	public void setDateCreated(Instant dateCreated) {
 		this.dateCreated = dateCreated;
 	}

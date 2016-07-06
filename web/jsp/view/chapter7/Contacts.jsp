@@ -6,26 +6,12 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>My Contacts</title>
+<title>
+	<fmt:message key="title.brower"></fmt:message>
+</title>
 </head>
 <body>
-	<c:choose>
-		<c:when test="${empty contacts}">
-			Your list is empty !
-		</c:when>
-		<c:otherwise>
-			<c:forEach items="${contacts }" var="contact">
-				<b>
-					<c:out value="${contact.lastName }, ${contact.firstName }" />
-				</b><br/>
-				<c:out value="${contact.address}" /><br />
-				<c:out value="${contact.phoneNumber}" /><br />
-				<c:if test="${contact.birthday != null}">
-				Birthday: ${contact.birthday}<br />
-				</c:if>
-				Created: ${contact.dateCreated}<br /><br />
-			</c:forEach>
-		</c:otherwise>
-	</c:choose>
+	<h2><fmt:message key="title.page"></fmt:message></h2>
+	
 </body>
 </html>

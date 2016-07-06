@@ -5,6 +5,7 @@ import java.time.Instant;
 import java.time.Month;
 import java.time.MonthDay;
 import java.util.Collections;
+import java.util.Locale;
 import java.util.SortedSet;
 import java.util.TreeSet;
 
@@ -13,6 +14,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.jsp.jstl.core.Config;
 
 /**
  * Servlet implementation class ContactServlet
@@ -48,6 +50,11 @@ public class ContactServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		
+		String language=request.getParameter("language");
+		if("french".equalsIgnoreCase(language))
+			Config.set(request, Config.FMT_LOCALE, Locale.FRANCE);
+		
 		if(request.getParameter("empty")!=null)
 			request.setAttribute("contacts", Collections.<Contact>emptySet());
 		else
