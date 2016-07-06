@@ -3,10 +3,6 @@
 <%@ include file="/jspf/base.jspf" %>
 <%--@elvariable id="ticketId" type="java.lang.String" --%>
 <%--@elvariable id="ticket" type="khanhnh.demo.ticketapp.tickets.ticket" --%>
-<%
-	String ticketID=(String)request.getAttribute("ticketID");
-	Ticket ticket=(Ticket)request.getAttribute("ticket");
-%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -21,31 +17,24 @@
 		Logout !
 		</a><br/>
 	</div>
-	<h2>Ticket: #<%= ticketID %>: <%=ticket.getSubject() %></h2>
-	<i>Customer Name - <%=ticket.getCustomerName() %></i><br/><br/>
-	<%=ticket.getBody() %><br/><br/>
-	<%
-		if(ticket.getNumberOfAttachments()>0){
-			%>Attachments: <%
-			int i=0;
-			for(Attachment a: ticket.getAttachments()){
-				if(i++>0)
-					out.print(", ");
-				%>
-					<a href="
-						<c:url value="/tickets">
-							<c:param name="action" value="download"/>
-							<c:param name="ticketID" value="<%=ticketID %>"/>
-							<c:param name="attachment" value="<%=a.getName() %>"/>
-						</c:url>"
-					>
-					<%=a.getName() %>
-					</a>				
-				<%
-			}
-				
-		}
-	%>
+	<h2>Ticket: #${ticketId }: <c:out value="${ticket.subject }" /></h2>
+	<i>Customer Name - <c:out value="${ticket.customerName }" /></i><br/><br/>
+	<c:out value="${ticket.body }" /><br/><br/>
+	<c:if test="${empty ticket.attachments }">
+		Attchment(s)
+		<c:forEach items="${ticket.attachments }" var="attachments" varStatus="status">
+			<c:if test="${!status.first }">,</c:if>
+			<a href="
+					<c:url value="/tickets">
+						<c:param name="action" value="download"/>
+						<c:param name="ticketID" value="${ticketId }"/>
+						<c:param name="attachment" value="${attachment.name }"/>
+					</c:url>"
+				>
+					<c:out value="${attachment.name }" />
+			</a>				
+		</c:forEach>
+	</c:if>
 	<br/><a href="<c:url value="/tickets" />"> Return to list tickets</a>
 </body>
 </html>

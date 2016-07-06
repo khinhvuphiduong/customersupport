@@ -1,6 +1,8 @@
 <%@page import="javax.swing.text.StyledEditorKit.BoldAction"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ include file="/jspf/base.jspf" %>
+<%--@elvariable id="loginFailed" type="java.lang.Boolean"--%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -9,12 +11,9 @@
 </head>
 <body>
 <h3>Login here !</h3>
-	<%
-		Boolean loginFailed=(Boolean)request.getAttribute("loginFailed");
-		if(loginFailed!=null &&loginFailed==true){
-			out.print("The username or password you entered are not correct. Please try again.");
-		}
-	%>
+	<c:if test="${loginFailed}">
+		<i>The username or password you entered are not correct. Please try again.</i>
+	</c:if>
 	<form method="POST" action="login">
 	<hr/>
 	<div style="margin:0px auto 0px auto;width: 300px;height: 300px;">
