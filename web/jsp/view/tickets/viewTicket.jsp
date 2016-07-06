@@ -1,7 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" session="false"
     pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ include file="/jspf/base.jspf" %>
+<%--@elvariable id="ticketId" type="java.lang.String" --%>
+<%--@elvariable id="ticket" type="khanhnh.demo.ticketapp.tickets.ticket" --%>
 <%
 	String ticketID=(String)request.getAttribute("ticketID");
 	Ticket ticket=(Ticket)request.getAttribute("ticket");
