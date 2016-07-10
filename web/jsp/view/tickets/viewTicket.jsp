@@ -9,6 +9,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Show Ticket</title>
 </head>
+<template:header></template:header>
 <body>
 	<div>
 		<a href="
@@ -20,9 +21,9 @@
 	<h2>Ticket: #${ticketId }: <c:out value="${ticket.subject }" /></h2>
 	<i>Customer Name - <c:out value="${ticket.customerName }" /></i><br/><br/>
 	<c:out value="${ticket.body }" /><br/><br/>
-	<c:if test="${empty ticket.attachments }">
-		Attchment(s)
-		<c:forEach items="${ticket.attachments }" var="attachments" varStatus="status">
+	<c:if test="${(empty ticket.attachments)==false }">
+		Attchment(s)(${fn:length(ticket.attachments) })&nbsp;&nbsp;
+		<c:forEach items="${ticket.attachments }" var="attachment" varStatus="status">
 			<c:if test="${!status.first }">,</c:if>
 			<a href="
 					<c:url value="/tickets">
@@ -31,10 +32,11 @@
 						<c:param name="attachment" value="${attachment.name }"/>
 					</c:url>"
 				>
-					<c:out value="${attachment.name }" />
+					<i>download&nbsp;<c:out value="${attachment.name }" /></i>
 			</a>				
 		</c:forEach>
 	</c:if>
 	<br/><a href="<c:url value="/tickets" />"> Return to list tickets</a>
 </body>
+<template:footer></template:footer>
 </html>
