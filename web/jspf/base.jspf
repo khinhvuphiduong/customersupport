@@ -4,4 +4,6 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="sql" uri="http://java.sun.com/jsp/jstl/sql" %>
 <%@ taglib prefix="x" uri="http://java.sun.com/jsp/jstl/xml" %>
+<%@ taglib prefix="template" tagdir="/WEB-INF/tags/template" %>
+<%@taglib prefix="khanhnh" uri="http://khanhnh.com/jsp/tld/khanhnh"%>
 <%--@elvariable id="loginFailed" type="java.lang.Boolean"--%>

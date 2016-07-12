@@ -88,8 +88,6 @@ public class TicketServlet extends HttpServlet {
 				// create ticket
 				this.createTicket(request, response);
 				break;
-			case "list":
-				break;
 			default:
 				response.sendRedirect("tickets");
 				break;
@@ -135,9 +133,9 @@ public class TicketServlet extends HttpServlet {
             return;
         }
 
-//        response.setHeader("Content-Disposition",
-//                "attachment; filename=" + attachment.getName());
-//        response.setContentType("application/octet-stream");
+        response.setHeader("Content-Disposition",
+                "attachment; filename=" + attachment.getName());
+        response.setContentType("application/octet-stream");
 
         ServletOutputStream stream = response.getOutputStream();
         stream.write(attachment.getContents());

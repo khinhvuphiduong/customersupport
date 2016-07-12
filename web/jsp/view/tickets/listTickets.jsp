@@ -9,6 +9,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Ticket List</title>
 </head>
+<template:header/>
 <body>
 	<div>
 		<a href="
@@ -40,8 +41,11 @@
 				"><c:out value="${entry.value.subject}"/>
 				</a>
 				(customer: <c:out value="${entry.value.customerName}" /> )
+				<br/>
+				<br/>
 			</c:forEach>
 		</c:otherwise>
 	</c:choose>
 </body>
+<template:footer/>
 </html>
