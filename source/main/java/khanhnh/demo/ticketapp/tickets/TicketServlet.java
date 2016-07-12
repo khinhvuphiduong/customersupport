@@ -3,6 +3,7 @@ package khanhnh.demo.ticketapp.tickets;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.time.OffsetDateTime;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
@@ -155,6 +156,7 @@ public class TicketServlet extends HttpServlet {
 	        ticket.setCustomerName(request.getParameter("customerName"));
 	        ticket.setSubject(request.getParameter("subject"));
 	        ticket.setBody(request.getParameter("body"));
+	        ticket.setDateCreated(OffsetDateTime.now());
 
 	        Part filePart = request.getPart("file1");
 	        if(filePart != null && filePart.getSize() > 0)

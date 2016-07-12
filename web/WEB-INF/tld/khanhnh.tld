@@ -146,6 +146,7 @@
 		</attribute>
 		<dynamic-attributes>false</dynamic-attributes>
 	</tag>
+	
 	<function>
 		<description>
 			Abbreviates a string using ellipses (...) if the string is too long.
@@ -157,6 +158,17 @@
 		<function-class>org.apache.commons.lang3.StringUtils</function-class>
 		<function-signature>
 			java.lang.String abbreviate(java.lang.String,int)
+		</function-signature>
+	</function>
+	
+	<function>
+		<description>
+			Format a time interval in an attractive way.
+		</description>
+		<name>timeIntervalToString</name>
+		<function-class>khanhnh.demo.ticketapp.utils.TimeUtils</function-class>
+		<function-signature>
+			java.lang.String intervalToString(long)
 		</function-signature>
 	</function>
 </taglib>
