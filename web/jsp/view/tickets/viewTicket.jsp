@@ -1,25 +1,12 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" session="false"
-    pageEncoding="UTF-8"%>
-<%@ include file="/jspf/base.jspf" %>
 <%--@elvariable id="ticketId" type="java.lang.String" --%>
 <%--@elvariable id="ticket" type="khanhnh.demo.ticketapp.tickets.ticket" --%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Show Ticket</title>
-</head>
-<template:header></template:header>
-<body>
-	<div>
-		<a href="
-			<c:url value="/login?logout" />
-		" >
-		Logout !
-		</a><br/>
-	</div>
+<%--@elvariable id="ticketId" type="java.lang.String"--%>
+<%--@elvariable id="ticket" type="com.wrox.Ticket"--%>
+<%@ include file="/jspf/base.jspf" %>
+<template:basic htmlTitle="${ticket.subject}" bodyTitle="Ticket #${ticketId}: ${ticket.subject}">
 	<h2>Ticket: #${ticketId }: <c:out value="${ticket.subject }" /></h2>
 	<i>Customer Name - <c:out value="${ticket.customerName }" /></i><br/><br/>
+	<khanhnh:formatDate value="${ticket.dateCreated }" type="both" timeStyle="long" dateStyle="full"/>
 	<c:out value="${ticket.body }" /><br/><br/>
 	<c:if test="${(empty ticket.attachments)==false }">
 		Attchment(s)(${fn:length(ticket.attachments) })&nbsp;&nbsp;
@@ -37,6 +24,4 @@
 		</c:forEach>
 	</c:if>
 	<br/><a href="<c:url value="/tickets" />"> Return to list tickets</a>
-</body>
-<template:footer></template:footer>
-</html>
+</template:basic>

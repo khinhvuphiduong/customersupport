@@ -37,7 +37,8 @@ public class SessionServlet extends HttpServlet {
 		
 		request.setAttribute("numberOfSessions", SessionRegistry.getNumberOfSession());
 		request.setAttribute("sessionList", SessionRegistry.getAllSession());
-		request.getRequestDispatcher("/jsp/view/tickets/sercurity/Sessions.jsp").forward(request, response);
+		request.setAttribute("timestamp", System.currentTimeMillis());
+		request.getRequestDispatcher("/jsp/view/tickets/sercurity/sessions.jsp").forward(request, response);
 	}
 
 	/**

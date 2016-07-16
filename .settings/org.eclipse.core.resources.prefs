@@ -1,4 +1,5 @@
 eclipse.preferences.version=1
 encoding//source/main/java=UTF-8
 encoding//source/test/java/unit=UTF-8
+encoding//web/WEB-INF/tags/template/loggedOut.tag=UTF-8
 encoding/<project>=UTF-8
