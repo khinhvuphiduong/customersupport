@@ -18,6 +18,7 @@ public class ChatSession {
 	private String customerUsername;
 	private Session customer;
 	private String representativeUsername;
+	private Session representative;
 	private ChatMessage creationMessage;
 	private final List<ChatMessage> chatLog=new ArrayList<>();
 	public long getSessionId() {
@@ -43,6 +44,13 @@ public class ChatSession {
 	}
 	public void setRepresentativeUsername(String representativeUsername) {
 		this.representativeUsername = representativeUsername;
+	}
+	
+	public Session getRepresentative() {
+		return representative;
+	}
+	public void setRepresentative(Session representative) {
+		this.representative = representative;
 	}
 	public ChatMessage getCreationMessage() {
 		return creationMessage;
