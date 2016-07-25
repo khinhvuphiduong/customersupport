@@ -8,7 +8,6 @@ import java.util.Hashtable;
 import java.util.List;
 import java.util.Map;
 
-import javax.servlet.UnavailableException;
 import javax.servlet.annotation.WebListener;
 import javax.servlet.http.HttpSession;
 import javax.servlet.http.HttpSessionEvent;
@@ -220,9 +219,10 @@ public class ChatEndpoint implements HttpSessionListener {
 			(s == c.getCustomer() ? c.getRepresentative() : c.getCustomer());
 	}
 
+	//Modify
 	public static class EndpointConfigurator extends ServerEndpointConfig.Configurator{
-		@Override
 		
+		@Override
 		public void modifyHandshake(ServerEndpointConfig config,
 				HandshakeRequest request, HandshakeResponse response)
 		{

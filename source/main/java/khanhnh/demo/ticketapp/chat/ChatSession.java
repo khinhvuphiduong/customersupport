@@ -45,7 +45,6 @@ public class ChatSession {
 	public void setRepresentativeUsername(String representativeUsername) {
 		this.representativeUsername = representativeUsername;
 	}
-	
 	public Session getRepresentative() {
 		return representative;
 	}
