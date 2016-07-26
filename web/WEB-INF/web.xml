@@ -11,12 +11,10 @@
       <file-size-threshold>5242880</file-size-threshold>
     </multipart-config>
   </servlet>
-  
   <servlet-mapping>
     <servlet-name>ticketServlet</servlet-name>
     <url-pattern>/tickets</url-pattern>
   </servlet-mapping>
-  
   <jsp-config>
     <jsp-property-group>
       <url-pattern>*.jsp</url-pattern>
@@ -28,12 +26,10 @@
       <default-content-type>text/html</default-content-type>
     </jsp-property-group>
   </jsp-config>
-  
   <context-param>
     <param-name>javax.servlet.jsp.jstl.fmt.localizationContext</param-name>
     <param-value>AddressBook-messages</param-value>
   </context-param>
-  
   <session-config>
     <session-timeout>30</session-timeout>
     <cookie-config>
@@ -41,7 +37,6 @@
     </cookie-config>
     <tracking-mode>COOKIE</tracking-mode>
   </session-config>
-  
   <welcome-file-list>
     <welcome-file>index.html</welcome-file>
     <welcome-file>index.htm</welcome-file>

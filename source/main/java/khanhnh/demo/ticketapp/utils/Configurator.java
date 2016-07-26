@@ -1,10 +1,12 @@
-package khanhnh.demo.ticketapp.sercurity;
+package khanhnh.demo.ticketapp.utils;
 
 import javax.servlet.FilterRegistration;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
 import javax.servlet.annotation.WebListener;
+
+import khanhnh.demo.ticketapp.sercurity.AuthenticationFilter;
 
 /**
  * Application Lifecycle Listener implementation class Configurator

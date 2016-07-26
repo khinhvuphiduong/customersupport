@@ -9,7 +9,7 @@ required="true" %>
 <template:main bodyTitle="${bodyTitle }" htmlTitle="${htmlTitle }">
 	<jsp:attribute name="headContent">
 	<link rel="stylesheet"
-			href="<c:url value="/resources/stylesheets/login.css" />" />
+			href="<c:url value="/resource/stylesheet/login.css" />" />
 	</jsp:attribute>
 	<jsp:attribute name="navigationContent">
 	</jsp:attribute>
