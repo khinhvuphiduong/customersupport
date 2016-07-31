@@ -21,6 +21,7 @@ public class ChatSession {
 	private Session representative;
 	private ChatMessage creationMessage;
 	private final List<ChatMessage> chatLog=new ArrayList<>();
+	
 	public long getSessionId() {
 		return sessionId;
 	}

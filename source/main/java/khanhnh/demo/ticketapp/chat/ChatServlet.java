@@ -36,7 +36,7 @@ public class ChatServlet extends HttpServlet {
 		String action = request.getParameter("action");
 		if ("list".equals(action)) {
 			request.setAttribute("sessions", ChatEndpoint.Pendingsessions());
-			request.getRequestDispatcher("/jsp/view/chat/list.jsp").forward(request, response);
+			request.getRequestDispatcher("/jsp/view/tickets/chat/list.jsp").forward(request, response);
 		} else
 			response.sendRedirect("tickets");
 	}
@@ -72,7 +72,7 @@ public class ChatServlet extends HttpServlet {
 		}
 
 		if (view != null)
-			request.getRequestDispatcher("jsp/view/chat/" + view + ".jsp").forward(request, response);
+			request.getRequestDispatcher("/jsp/view/tickets/chat/" + view + ".jsp").forward(request, response);
 	}
 
 }

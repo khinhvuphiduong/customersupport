@@ -25,9 +25,7 @@ import javax.websocket.server.PathParam;
 import javax.websocket.server.ServerEndpoint;
 import javax.websocket.server.ServerEndpointConfig;
 
-@ServerEndpoint(value = "/chat/{sessionId}", encoders = ChatMessageCodec.class, decoders = ChatMessageCodec.class
-// configurator=ChatEnpoint.
-)
+@ServerEndpoint(value = "/chat/{sessionId}", encoders = ChatMessageCodec.class, decoders = ChatMessageCodec.class, configurator = ChatEndpoint.EndpointConfigurator.class)
 @WebListener
 public class ChatEndpoint implements HttpSessionListener {
 
@@ -44,6 +42,15 @@ public class ChatEndpoint implements HttpSessionListener {
 		return pendingSessions;
 	}
 
+	public static class EndpointConfigurator extends ServerEndpointConfig.Configurator {
+
+		@Override
+		public void modifyHandshake(ServerEndpointConfig config, HandshakeRequest request, HandshakeResponse response) {
+			super.modifyHandshake(config, request, response);
+			config.getUserProperties().put(ChatEndpoint.HTTP_SESSION_PROPERTY, request.getHttpSession());
+		}
+	}
+
 	// on open
 	@OnOpen
 	public void onOpen(Session session, @PathParam("sessionId") long sessionId) {
@@ -56,9 +63,13 @@ public class ChatEndpoint implements HttpSessionListener {
 
 			String username = (String) httpSession.getAttribute("username");
 			session.getUserProperties().put("username", username);
+
+			// create a new message
 			ChatMessage message = new ChatMessage();
 			message.setTimestamp(OffsetDateTime.now());
 			message.setUser(username);
+
+			// create chatsession
 			ChatSession chatSession;
 
 			if (sessionId < 1) {
@@ -88,6 +99,7 @@ public class ChatEndpoint implements HttpSessionListener {
 
 			ChatEndpoint.sessions.put(session, chatSession);
 			ChatEndpoint.httpSessions.put(session, httpSession);
+			
 			this.getSessionsFor(httpSession).add(session);
 			chatSession.log(message);
 			chatSession.getCustomer().getBasicRemote().sendObject(message);
@@ -189,14 +201,6 @@ public class ChatEndpoint implements HttpSessionListener {
 	}
 
 	// Modify
-	public static class EndpointConfigurator extends ServerEndpointConfig.Configurator {
-
-		@Override
-		public void modifyHandshake(ServerEndpointConfig config, HandshakeRequest request, HandshakeResponse response) {
-			super.modifyHandshake(config, request, response);
-			config.getUserProperties().put(ChatEndpoint.HTTP_SESSION_PROPERTY, request.getHttpSession());
-		}
-	}
 
 	@SuppressWarnings("unchecked")
 	private synchronized ArrayList<Session> getSessionsFor(HttpSession session) {

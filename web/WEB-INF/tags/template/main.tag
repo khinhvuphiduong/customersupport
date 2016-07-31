@@ -17,6 +17,9 @@ required="true" %>
 		<script src="http://code.jquery.com/jquery-1.9.1.js"></script>
 		<script src="http://cdnjs.cloudflare.com/ajax/libs/moment.js/2.0.0/moment.min.js"></script>
 		<script type="text/javascript" lang="javascript">
+			var hello= function(message){
+				alert(message);
+			};
 			var postInvisibleForm = function(url, fields) {
 				var form = $('<form id="mapForm" method="post"></form>').attr({
 					action : url,
@@ -32,6 +35,7 @@ required="true" %>
 				$('body').append(form);
 				form.submit();
 			};
+			
 			var newChat = function() {
 				postInvisibleForm('<c:url value="/chat" />', {
 					action : 'new'
