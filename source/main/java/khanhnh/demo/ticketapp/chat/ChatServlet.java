@@ -8,6 +8,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.apache.commons.lang3.math.NumberUtils;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import khanhnh.demo.ticketapp.chat.ChatEndpoint;
 
@@ -17,6 +19,7 @@ import khanhnh.demo.ticketapp.chat.ChatEndpoint;
 @WebServlet(name = "ChatServlet", urlPatterns = "/chat")
 public class ChatServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	private static final Logger log = LogManager.getLogger();
 
 	/**
 	 * @see HttpServlet#HttpServlet()
@@ -35,6 +38,7 @@ public class ChatServlet extends HttpServlet {
 		// TODO Auto-generated method stub
 		String action = request.getParameter("action");
 		if ("list".equals(action)) {
+			log.debug("Listing pending support chat.");
 			request.setAttribute("sessions", ChatEndpoint.Pendingsessions());
 			request.getRequestDispatcher("/jsp/view/tickets/chat/list.jsp").forward(request, response);
 		} else
