@@ -26,6 +26,9 @@
         <logger name="org.apache" level="info">
             <appender-ref ref="FileAppender" />
         </logger>
+        <logger name="org.springframework" level="info">
+        	<appender-ref ref="Console"></appender-ref>
+        </logger>
     </loggers>
 </configuration>
 
